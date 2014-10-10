@@ -244,6 +244,7 @@ if (has("gui_running") && g:solarized_degrade == 0)
     let s:vmode       = "gui"
     let s:base03      = "#002b36"
     let s:base02      = "#073642"
+    let s:base03_dark = "#00202a" "Darker version for higher contrast background.
     let s:base01      = "#586e75"
     let s:base00      = "#657b83"
     let s:base0       = "#839496"
@@ -397,12 +398,16 @@ endif
 " Optional contrast schemes "{{{
 " ---------------------------------------------------------------------
 if g:solarized_contrast == "high"
+    let s:base02      = s:base03
+    let s:base03      = s:base03_dark
     let s:base01      = s:base00
     let s:base00      = s:base0
     let s:base0       = s:base1
     let s:base1       = s:base2
     let s:base2       = s:base3
-    let s:back        = s:back
+    if (s:back != "NONE")
+        let s:back        = s:base03 "Set to the remapped base03
+    endif
 endif
 if g:solarized_contrast == "low"
     let s:back        = s:base02
